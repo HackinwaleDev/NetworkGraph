@@ -91,9 +91,10 @@ function update(source) {
 	  .style("fill", function(d,i) { return d._children ? "lightsteelblue" : "url(#"+d.name+")"; });
 
   nodeEnter.append("text")
-	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+      .attr("x", function(d) { return d.children || d._children ? -15 : -15; })
+      .attr("y", function(d) { return 30})
 	  .attr("dy", ".35em")
-	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	//   .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
 	  .text(function(d) { return d.name; })
 	  .style("fill-opacity", 1e-6);
 
