@@ -33,11 +33,31 @@
 
   <body>
       <div id="svg-container">
-        <defs>
-        <pattern id="vivian" patternUnits="userSpaceOnUse" width="100" height="100">
-          <image xlink:href="icons/vivian.png" x="0" y="0" width="100" height="100" />
-        </pattern>
-      </defs>
+        <svg>
+          <defs>
+          <pattern id="Zeddysoft"  width="50" height="50">
+            <image xlink:href="icons/family.png" x="0" y="0" width="50" height="50" />
+          </pattern>
+          <pattern id="Dad"  width="50" height="50">
+            <image xlink:href="icons/dad.png" x="0" y="0" width="50" height="50" />
+          </pattern>
+          <pattern id="Mom"  width="50" height="50">
+            <image xlink:href="icons/mom.png" x="0" y="0" width="50" height="50" />
+          </pattern>
+          <pattern id="Johny"  width="50" height="50">
+            <image xlink:href="icons/johny.png" x="0" y="0" width="50" height="50" />
+          </pattern>
+          <pattern id="James"  width="50" height="50">
+            <image xlink:href="icons/james.png" x="0" y="0" width="50" height="50" />
+          </pattern>
+          <pattern id="Lilian"  width="50" height="50">
+            <image xlink:href="icons/lilian.png" x="0" y="0" width="50" height="50" />
+          </pattern>
+          <pattern id="Vivian"  width="50" height="50">
+            <image xlink:href="icons/vivian.png" x="0" y="0" width="50" height="50" />
+          </pattern>
+          </defs>
+        </svg>
       </div>
       
 <!-- load the d3.js library -->	
@@ -49,12 +69,12 @@
 
 var treeData = [
   {
-    "name": "Zeddysoft Nation",
+    "name": "Zeddysoft",
     "parent": "null",
     "children": [
       {
         "name": "Dad",
-        "parent": "Zeddysoft Nation",
+        "parent": "Zeddysoft",
         "children": [
           {
             "name": "Johny",
@@ -68,7 +88,7 @@ var treeData = [
       },
       {
         "name": "Mom",
-        "parent": "Zeddysoft Nation",
+        "parent": "Zeddysoft",
         "children": [
             {
               "name": "Lilian",
@@ -100,7 +120,7 @@ var tree = d3.layout.tree()
 var diagonal = d3.svg.diagonal()
 	.projection(function(d) { return [d.y, d.x]; });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("svg")
 	.attr("width", width + margin.right + margin.left)
 	.attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -134,8 +154,8 @@ function update(source) {
 	  .on("click", click);
 
   nodeEnter.append("circle")
-	  .attr("r", function(d){return 1e-6})
-	  .style("fill", function(d){ return "url(#vivian)"})//function(d) { return d._children ? "lightsteelblue" : "url(#vivian)"; });
+	  .attr("r",  1e-6)
+	  .style("fill", function(d,i) { return d._children ? "lightsteelblue" : "url(#"+d.name+")"; });
 
   nodeEnter.append("text")
 	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
@@ -150,8 +170,8 @@ function update(source) {
 	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeUpdate.select("circle")
-	  .attr("r", 50)
-	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "url(#vivian)"; });
+	  .attr("r", 25)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "url(#"+d.name+")"; });
 
   nodeUpdate.select("text")
 	  .style("fill-opacity", 1);
