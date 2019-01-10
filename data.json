@@ -1,0 +1,34 @@
+{
+    "name": "Zeddysoft Nation",
+    "parent": "null",
+    "children": [
+      {
+        "name": "Dad",
+        "parent": "Zeddysoft Nation",
+        "children": [
+          {
+            "name": "Johny",
+            "parent": "Dad"
+          },
+          {
+            "name": "James",
+            "parent": "Dad"
+          }
+        ]
+      },
+      {
+        "name": "Mom",
+        "parent": "Zeddysoft Nation",
+        "children": [
+            {
+              "name": "Lilian",
+              "parent": "Mom"
+            },
+            {
+              "name": "Vivian",
+              "parent": "Mom"
+            }
+          ]
+      }
+    ]
+  }
